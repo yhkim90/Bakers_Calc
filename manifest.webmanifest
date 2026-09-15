@@ -1,0 +1,23 @@
+{
+  "name": "제빵 계산",
+  "short_name": "제빵 계산",
+  "description": "제빵기능사 공개문제 20종 배합을 베이커스%로 계산합니다.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f1ea",
+  "theme_color": "#5C4033",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
