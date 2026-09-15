@@ -16,6 +16,10 @@
     return state.items.find(function (item) { return item.id === id; });
   }
 
+  function nameLines(name) {
+    return calc.escapeHtml(name || "이름 없는 품목").replace(/\(/g, "<br>(");
+  }
+
   function persist() { store.save(state); }
 
   function parseHash() {
@@ -121,14 +125,15 @@
     var rows = state.items.map(function (item) {
       var topping = item.toppings.length ? " · 토핑 " + item.toppings.length + "종" : "";
       return '<a class="item-link" href="#/item/' + item.id + '">' +
-        "<strong>" + calc.escapeHtml(item.name || "이름 없는 품목") + "</strong>" +
+        "<strong>" + nameLines(item.name) + "</strong>" +
         "<span>분할 " + calc.escapeHtml(item.pieceWeight) + "g · 반죽합 " + calc.doughPct(item).toFixed(1) + "%" + topping + "</span>" +
         "</a>";
     }).join("");
     return '<header class="topbar">' +
       '<button class="ghost" type="button" data-reload>새로고침</button>' +
       " <h1>품목</h1><span></span></header>" +
-      '<p class="lede">제빵기능사 공개문제 20종을 기본으로 넣었습니다. 입력값은 이 휴대폰에만 저장됩니다.</p>' +
+      '<p class="lede"><span class="lede-line">제빵기능사 공개문제 20종을 기본으로 넣었습니다.</span>' +
+      '<span class="lede-line">입력값은 이 휴대폰에만 저장됩니다.</span></p>' +
       '<div class="list">' + rows + "</div>" +
       '<button class="btn btn-primary" id="add-item">새 품목 등록</button>' +
       '<div class="footer-actions">' +
@@ -144,13 +149,14 @@
     var rows = state.items.map(function (item) {
       var n = (item.steps || []).length;
       return '<a class="item-link" href="#/item/' + item.id + '/steps">' +
-        "<strong>" + calc.escapeHtml(item.name || "이름 없는 품목") + "</strong>" +
+        "<strong>" + nameLines(item.name) + "</strong>" +
         "<span>" + (n ? n + "단계 절차" : "절차 없음 · 눌러서 입력") + "</span></a>";
     }).join("");
     return '<header class="topbar">' +
       '<button class="ghost" type="button" data-reload>새로고침</button>' +
       " <h1>매뉴얼</h1><span></span></header>" +
-      '<p class="lede">품목별 베이킹 절차입니다. 단계를 누르면 오늘 진행을 표시합니다.</p>' +
+      '<p class="lede"><span class="lede-line">품목별 베이킹 절차입니다.</span>' +
+      '<span class="lede-line">단계를 누르면 오늘 진행을 표시합니다.</span></p>' +
       '<div class="list">' + rows + "</div>";
   }
 

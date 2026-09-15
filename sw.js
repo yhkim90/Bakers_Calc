@@ -1,4 +1,4 @@
-const CACHE = "bakers-calc-20260915a";
+const CACHE = "bakers-calc-20260915b";
 const APP_SHELL = [
   "./",
   "./index.html",

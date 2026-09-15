@@ -1,7 +1,7 @@
 (function (global) {
   "use strict";
 
-  var APP_VERSION = "20260915a";
+  var APP_VERSION = "20260915b";
 
   function uid() {
     return global.crypto && global.crypto.randomUUID
